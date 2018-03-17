@@ -1,0 +1,56 @@
+package rollthedice;
+/*
+Megan McElenney
+18 September 2017
+Roll the Dice
+Plays a dice game where a point is awarded to someone who gets a double. The 
+winner is whoever gets to 5 first.
+
+Test Data:
+Input           Output                                          Passed?
+Random Roll     Player 2 wins because they have 5 points        Yes
+Random Roll     Player 1 wins because they have 5 points        Yes
+Random Roll     Player 2 wins because they have 5 points        Yes
+*/  
+
+public class RollTheDice 
+{
+
+    public static void main(String[] args) 
+    {
+        int score = 0;
+        int score2 =0;
+        while(score < 5 && score2 < 5)
+        {
+            int die1 = (int) (Math.random() * 6 + 1);
+            int die2 = (int) (Math.random() * 6 + 1);
+            int die3 = (int) (Math.random() * 6 + 1);
+            int die4 = (int) (Math.random() * 6 + 1);
+            
+            if (die1 == die2 && die3 == die4)
+            {
+                if(die1 == die3)
+                    System.out.print("It's a tie! \n");
+                else if(die1 > die3)
+                    score++;
+                else
+                    score2++; 
+            }
+            
+            if (die1 == die2)
+                score++;
+            
+            if(die3 == die4)
+                score2++;  
+            
+            System.out.print("Player one's score is: " + score + "\n");
+            System.out.print("Player two's score is: " + score2 + "\n\n");
+        }
+        
+        if(score >= 5)
+            System.out.print("Player 1 wins!");
+        else if(score2 >= 5)
+            System.out.print("Player 2 wins!");
+    }
+    
+}
